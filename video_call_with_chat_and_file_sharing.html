@@ -156,7 +156,8 @@ function start() {
 
   // setup generic connection to the signaling server using the WebSocket API
   console.log("setting up connection to signaling server");
-  signaling_server = new WebSocket("wss://webrtcbookex.herokuapp.com:1234");
+  var host = location.origin.replace(/^https/, 'wss');
+  signaling_server = new WebSocket(host||"webrtcbookex.herokuapp.com:1234");
 
   if (document.location.hash === "" || document.location.hash === undefined) { // you are the Caller
     console.log("you are the Caller");
